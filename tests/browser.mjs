@@ -18,6 +18,7 @@ try {
   await page.locator('#dx-demo').click();
   assert.match(await page.locator('#dx-result').innerText(), /符合所選 GDM/);
   assert.match(await page.locator('#dx-result .result-table tr').nth(1).innerText(), /達門檻/);
+  assert.match(await page.locator('#dx-result .tw-block').innerText(), /台灣規範[\s\S]*同樣判定為妊娠糖尿病/);
   await page.locator('#dx-unit').selectOption('mmol');
   assert.equal(await page.locator('#dx-0').inputValue(), '');
   await page.locator('#dx-0').fill('5.1');
@@ -32,6 +33,7 @@ try {
   await page.locator('[data-view=glucose]').click();
   await page.locator('#log-demo').click();
   assert.match(await page.locator('#log-result').innerText(), /11/);
+  assert.match(await page.locator('#log-result .tw-block').innerText(), /60–95/);
   await page.locator('[data-view=postpartum]').click();
   await page.locator('#birth-date').fill('2026-12-20');
   await page.locator('#date-form button').click();
@@ -41,6 +43,7 @@ try {
   await page.locator('#post-confirm').check();
   await page.locator('#post-form button').click();
   assert.match(await page.locator('#post-result').innerText(), /糖尿病前期/);
+  assert.match(await page.locator('#post-result .tw-block').innerText(), /4–12 週/);
   for (let i=0; i<6; i++) {
     await page.locator('[data-view=cases]').click();
     await page.locator('[data-case="'+i+'"]').click();

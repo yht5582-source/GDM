@@ -78,6 +78,18 @@ export function postpartum(input){
  if([input.fasting,input.two].some(v=>Number(v)<(input.unit==='mmol'?3.9:70)))r.lowWarning='本次有低血糖值，請確認症狀與是否已處置；未達糖尿病門檻不代表檢驗完全正常。';
  return r;
 }
+// Taiwan public prenatal-care rules (國健署) are reported separately from the international result.
+export const twSource='國健署孕婦產前檢查補助（110.7.1 起）、孕產兒關懷網站';
+export function taiwanDx({protocol='ada75',week,acute=false},r){
+ if(acute||!r)return null;
+ const w=Number(week),items=[];
+ if(protocol==='ada75'){
+  items.push(r.kind==='danger'?'國健署公費篩檢採同一 IADPSG 標準；本次已達明顯糖尿病範圍，處置同上，不只按 GDM 追蹤。':w<24?'國健署公費 75 g OGTT 時程為妊娠 24–28 週；早於此時程的結果不作台灣公費路徑的 GDM 診斷。':r.kind==='success'?'國健署公費篩檢同採 IADPSG 標準（空腹 ≥92、1 小時 ≥180、2 小時 ≥153 mg/dL，任一項）；本結果在台灣同樣判定為妊娠糖尿病。':'國健署公費篩檢同採 IADPSG 標準（92／180／153 mg/dL，任一項）；本結果在台灣同樣未達妊娠糖尿病診斷。');
+ }else if(protocol==='early')items.push('國健署公費妊娠糖尿病篩檢時程為妊娠 24–28 週；早孕期血糖／HbA1c 評估不在該補助項目內，由醫師依風險安排。例行產檢含尿糖檢查。');
+ else items.push(`國健署公費篩檢為一步法 75 g OGTT（空腹、1 小時、2 小時三次血漿葡萄糖）；${{nice75:'NICE 門檻',cc100:'100 g OGTT 兩步法',screen50:'50 g 初篩兩步法'}[protocol]||'此方案'}不在公費補助流程內，判讀依院內規範。`);
+ if(protocol!=='early'&&Number.isFinite(w)&&w>28)items.push(`公費補助時程為妊娠 24–28 週；目前 ${w} 週已超過，補篩與費用請由產科確認。`);
+ return {items,source:twSource};
+}
 export function postpartumWindow(date){
  if(!/^\d{4}-\d{2}-\d{2}$/.test(date))throw new Error('請選擇生產日期。');
  const d=new Date(date+'T12:00:00Z');if(Number.isNaN(d.valueOf())||d.toISOString().slice(0,10)!==date)throw new Error('生產日期無效。');

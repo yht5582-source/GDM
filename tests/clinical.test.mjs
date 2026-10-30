@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {diagnose,postpartum,postpartumWindow,assessLog} from '../clinical.mjs';
+import {diagnose,postpartum,postpartumWindow,assessLog,taiwanDx} from '../clinical.mjs';
 const dx=(values,rest={})=>diagnose({protocol:'ada75',week:26,unit:'mg',values,...rest});
 for(const [name,values,expected] of [
  ['below all',[91,179,152],0],['fasting equality',[92,179,152],1],['1h equality',[91,180,152],1],['2h equality',[91,179,153],1],['all equal',[92,180,153],3]
@@ -62,3 +62,13 @@ test('index.html inline engine matches clinical.mjs',async()=>{
  const mod=(await readFile(new URL('../clinical.mjs',import.meta.url),'utf8')).replaceAll('export ','').trim();
  assert.equal(inline,mod,'index.html 內嵌臨床規則與 clinical.mjs 不一致');
 });
+const tw=(values,rest={})=>{const input={protocol:'ada75',week:26,unit:'mg',values,...rest};return taiwanDx(input,diagnose(input))};
+test('TW 75 g GDM agrees with IADPSG',()=>assert.match(tw([92,170,148]).items[0],/同樣判定為妊娠糖尿病/));
+test('TW 75 g normal agrees',()=>assert.match(tw([91,179,152]).items[0],/同樣未達/));
+test('TW overt not reduced to GDM',()=>assert.match(tw([130,170,148]).items[0],/明顯糖尿病/));
+test('TW before 24 wk not a public-path diagnosis',()=>assert.match(tw([92,170,148],{week:20}).items[0],/24–28 週/));
+test('TW after 28 wk flags timing',()=>assert.match(tw([92,170,148],{week:30}).items[1],/已超過/));
+test('TW 100 g is not public path',()=>assert.match(tw([95,180,140,120],{protocol:'cc100'}).items[0],/100 g OGTT 兩步法不在公費/));
+test('TW 50 g is not public path',()=>assert.match(tw([145],{protocol:'screen50'}).items[0],/50 g 初篩/));
+test('TW early points to 24–28 wk screening',()=>assert.match(tw([118,6.1,''],{protocol:'early',week:10}).items[0],/24–28 週/));
+test('TW none for acute',()=>assert.equal(taiwanDx({acute:true},{kind:'danger'}),null));
