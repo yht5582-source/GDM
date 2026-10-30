@@ -78,8 +78,8 @@ function assessLog({text,unit='mg',meal='1',guideline='ada'}){
  const fasting=isM?5.3:guideline==='nice'?95.4:95;
  const post=meal==='1'?(isM?7.8:guideline==='nice'?140.4:140):(isM?(guideline==='nice'?6.4:6.7):(guideline==='nice'?115.2:120));
  const low=isM?3.9:70,severe=isM?3:54;
- const rows=text.trim().split(/\n/).map((line,index)=>{
-  const parts=line.trim().split(/[,，\t]/); if(parts.length!==4)throw new Error(`第 ${index+1} 列須有 4 欄，以逗號分隔；缺測填「-」。`);
+ const rows=text.split(/\n/).map((line,index)=>({line:line.trim(),index})).filter(r=>r.line).map(({line,index})=>{
+  const parts=line.split(/[,，\t]/); if(parts.length!==4)throw new Error(`第 ${index+1} 列須有 4 欄，以逗號分隔；缺測填「-」。`);
   return parts.map((s,j)=>{
    if(['','-','—'].includes(s.trim()))return null;
    const v=number(s.trim(),`第 ${index+1} 列第 ${j+1} 欄`,min,max);
