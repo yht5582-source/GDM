@@ -89,6 +89,61 @@ button.primary:hover{background:#064f55}
 .form-grid.three:has(>.field:nth-child(4)){grid-template-columns:repeat(2,minmax(0,1fr))}
 #diagnosis-form .actions+.small-note{margin-top:14px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style><style id="v13">
+/* v1.3 teaching tabs: quiz and mind map */
+.sidebar{overflow-y:auto}
+.tag{display:inline-block;font-size:11px;font-weight:650;padding:1px 8px;border-radius:999px;white-space:nowrap}
+.tag.intl{background:#e3edf9;color:#1f4f8a}.tag.tw{background:#dcf0e2;color:#1d6a3a}
+.q-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:16px 0}
+.q-bar .tabs{margin:0;flex:0 1 330px}
+.q-score{margin:0 auto 0 0;font-size:14px;font-weight:650;color:var(--deep);font-variant-numeric:tabular-nums}
+.q-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 24px;margin-bottom:14px}
+.q-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;font-size:12px;color:var(--muted)}
+.q-num{font-weight:750;letter-spacing:.08em;color:var(--teal)}
+.q-lv{font-weight:700;padding:1px 9px;border-radius:999px;background:#eef3f4;color:#4b6870}
+.q-lv.adv{background:#fdebd6;color:#8a4a07}
+.q-stem{font-size:16px;color:var(--ink);font-weight:600;margin-bottom:12px}
+.q-opt{display:flex;gap:10px;width:100%;text-align:left;margin-bottom:8px;padding:10px 14px;font-weight:500;font-size:15px;align-items:flex-start;background:#fff}
+.q-opt b{flex-shrink:0;color:var(--teal)}
+.q-opt:disabled{cursor:default;color:var(--text);opacity:1}
+.q-opt.right{background:var(--ok-bg);border-color:#8fcfac}.q-opt.right b{color:var(--ok)}
+.q-opt.wrong{background:var(--bad-bg);border-color:#e6a9a2}.q-opt.wrong b{color:var(--bad)}
+.q-why{border-top:1px solid var(--line);margin-top:12px;padding-top:12px;font-size:14px}
+.q-why strong.ok{color:var(--ok)}.q-why strong.no{color:var(--bad)}
+.q-src{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.mm{position:relative;display:grid;gap:14px}
+.mm-links{display:none}
+.mm-center{background:linear-gradient(160deg,#0b4d54,#0a7b7c);color:#fff;border-radius:16px;padding:16px;text-align:center;font-weight:700;line-height:1.4}
+.mm-center small{display:block;color:#bfe5e0;font-weight:500;margin-top:4px}
+.mm-branch{--c:#0a8a8c;--bg:#e8f6f2;border-left:3px solid var(--c);padding-left:12px}
+.mm-node{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;background:var(--bg);border:1px solid var(--c);color:var(--ink);font-weight:700;padding:10px 12px;align-items:center}
+.mm-node:hover{background:var(--bg);filter:brightness(.97)}
+.mm-node i{font-style:normal;color:var(--c);font-size:12px}
+.mm-node[aria-expanded=true] i{transform:rotate(90deg)}
+.mm-leaves{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.mm-leaf{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 11px;font-size:13px;line-height:1.55}
+.mm-leaf strong{display:block;color:var(--ink);font-size:13.5px}
+.mm-leaf .tag{margin:3px 4px 0 0}
+.mm-leaf.go{border-style:dashed;background:transparent}
+.mm-legend{display:flex;gap:6px;margin:0 auto 0 0}
+.mm-tools{display:flex;gap:8px}
+.mm-branch.b1{--c:#2b7fb5;--bg:#e8f2f9}.mm-branch.b2{--c:#0a8a8c;--bg:#e8f6f2}.mm-branch.b3{--c:#c9462f;--bg:#fdeeec}.mm-branch.b4{--c:#7a5bb5;--bg:#f1edf9}.mm-branch.b5{--c:#d48a1c;--bg:#fff6e6}.mm-branch.b6{--c:#3c9a5f;--bg:#eaf6ee}
+@media(min-width:1300px){
+ .mm{grid-template-columns:minmax(0,1fr) 130px minmax(0,1fr);gap:0 26px;align-items:center}
+ .mm-links{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+ .mm-links path{fill:none;stroke-width:1.6;opacity:.65}
+ .mm-side{display:grid;gap:18px}
+ .mm-center{grid-column:2;grid-row:1;position:relative;z-index:1}
+ .mm-side.left{grid-column:1;grid-row:1}.mm-side.right{grid-column:3;grid-row:1}
+ .mm-branch{display:grid;grid-template-columns:126px minmax(0,1fr);gap:24px;align-items:center;border-left:0;padding-left:0;position:relative;z-index:1}
+ .mm-side.left .mm-branch{grid-template-columns:minmax(0,1fr) 126px}
+ .mm-node{font-size:14px;padding:10px 9px}
+ .mm-side.left .mm-node{grid-column:2;grid-row:1}.mm-side.left .mm-leaves{grid-column:1;grid-row:1}
+ .mm-leaves{margin:0}
+}
+@media(max-width:1299px){.mm-side{display:grid;gap:14px}}
+@media(max-width:700px){.q-card{padding:16px}.q-bar .tabs{flex:1 1 100%}.q-stem{font-size:15px}.q-opt{font-size:14px}}
+@media print{.q-opt,.mm-node{display:flex!important}.q-card,.mm-leaf{break-inside:avoid;box-shadow:none}.mm-links{display:none!important}.mm{display:block}.mm-side{display:block}.mm-branch{display:block;border-left:3px solid var(--c);padding-left:12px;margin-bottom:12px}}
 </style><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%23087d80' stroke-width='2'/%3E%3Ccircle cx='26' cy='26' r='10' fill='%23def1ed' stroke='%23087d80' stroke-width='2'/%3E%3C/svg%3E"></head>
 <body><a class="skip" href="#main-content">跳至主要內容</a><div class="shell">
 <aside class="sidebar"><div class="brand"><div class="brand-mark" aria-hidden="true"></div><div><strong>孕期糖尿病</strong><span>診療導航</span></div></div><nav class="nav" aria-label="主要導覽" id="nav"></nav><div class="sidebar-bottom">給臨床照護團隊的決策輔助<br>ADA 2026 · NICE · WHO<br><br>資料只在本頁暫存<br>重新整理即清除</div></aside>
@@ -103,6 +158,10 @@ button.primary:hover{background:#064f55}
 <section id="postpartum" class="view" hidden aria-label="產後追蹤"><div class="section-title"><h2>產後追蹤</h2><p>GDM 產後需確認是否仍有糖代謝異常。此頁採 ADA 75 g OGTT 路徑，並列出 NICE 的不同做法。</p></div><div class="panel"><form id="date-form" novalidate><div class="form-grid"><div class="field"><label for="birth-date">生產日期（預產日亦可，用於預排）</label><input id="birth-date" type="date"></div><div class="field"><span>產後檢驗安排</span><button class="primary">計算檢查窗口</button></div></div><div id="date-result" aria-live="polite"></div></form></div><div class="workspace" style="margin-top:18px"><div class="panel"><h3>產後 75 g OGTT 判讀</h3><p class="small-note">適用近期 GDM、目前已生產者；已知第 1／2 型糖尿病應持續原糖尿病照護，不用此檢驗重新決定是否有病。</p><form id="post-form" novalidate><div class="field"><label for="post-unit">血糖單位</label><select id="post-unit"><option value="mg">mg/dL</option><option value="mmol">mmol/L</option></select></div><div class="form-grid"><div class="field"><label for="post-fasting">空腹血糖</label><input type="number" step="any" id="post-fasting" inputmode="decimal"></div><div class="field"><label for="post-two">喝糖水後 2 小時</label><input type="number" step="any" id="post-two" inputmode="decimal"></div></div><label class="check"><input type="checkbox" id="post-confirm"><span>確認為產後／非孕期的空腹 75 g OGTT</span></label><div class="error" id="post-error" role="alert"></div><div class="actions"><button class="primary">依非孕期標準判讀</button></div></form></div><aside id="post-result" class="panel result info empty" aria-live="polite"><h2>產後標準與孕期不同</h2><p>不可沿用 92／180／153 mg/dL 的孕期診斷門檻。</p><p class="small-note">ADA：產後 4–12 週 75 g OGTT；不優先採 HbA1c，因為分娩失血與紅血球變化可能影響結果。</p></aside></div><div class="band"><h3>生產後用藥與長期照護</h3><ul><li>GDM：生產後通常停止降血糖治療，先確認是否持續高血糖，再由醫師決定後續。</li><li>既有糖尿病：胰島素需求可能迅速下降，需重新調整；第 1 型不可完全停用基礎胰島素。</li><li>哺乳期間注意低血糖，提供營養與心理支持，討論避孕及下一次孕前計畫。</li><li>即使產後 OGTT 正常，仍每 1–3 年篩檢；糖尿病前期者依風險更密切追蹤。</li></ul></div><p class="source-line">ADA 2026 §15.26–15.33；NICE NG3 §1.6；非孕期門檻：NIDDK Tests & Diagnosis。<a href="#sources" data-go="sources">查看指引差異</a></p></section>
 
 <section id="cases" class="view" hidden aria-label="學習病例"><div class="section-title"><h2>學習病例</h2><p>六個虛構教學情境。先思考分流與下一步，再展開解析；可將檢驗值載入計算器。</p></div><div class="cases" id="case-list"></div></section>
+
+<section id="quiz" class="view" hidden aria-label="考題"><div class="section-title"><h2>考題</h2><p>基礎 10 題、高階 10 題，皆為虛構情境。點選答案後立即顯示解析與出處；重新整理即清除，不記錄作答。</p></div><div class="q-bar no-print"><div class="tabs" id="q-filter" role="group" aria-label="題目範圍"></div><p class="q-score" id="q-score" aria-live="polite"></p><button type="button" class="small" id="q-reset">重新作答</button></div><div id="q-list"></div><p class="source-line">依 ADA 2026 §2、§15，NICE NG3（現行網頁版）與國健署資料撰寫，查核 2026-11-01。藍色標籤為國際規範，綠色標籤為台灣規範。</p></section>
+
+<section id="map" class="view" hidden aria-label="心智圖"><div class="section-title"><h2>診斷與治療心智圖</h2><p>左側從孕前到確診，右側從目標、治療到產後。點分支可收合；不同指引的數值並列，不混用。</p></div><div class="q-bar no-print"><p class="mm-legend"><span class="tag intl">國際規範</span><span class="tag tw">台灣規範</span></p><div class="mm-tools"><button type="button" class="small" id="mm-open">全部展開</button><button type="button" class="small" id="mm-close">全部收合</button></div></div><div class="mm" id="mm"></div><p class="source-line">依 ADA 2026 §2、§15，NICE NG3（現行網頁版）與國健署資料整理，查核 2026-11-01。心智圖為教學摘要，不產生個人化處方。</p></section>
 
 <section id="sources" class="view" hidden aria-label="指引與差異"><div class="section-title"><h2>指引與差異</h2><p>數值規則分開使用，不將不同指引的診斷及治療條件混合成一套標準。</p></div><div class="scroll-table"><table class="content-table"><thead><tr><th>議題</th><th>ADA 2026</th><th>NICE NG3／WHO 2025</th><th class="tw-col">台灣 · 國健署</th></tr></thead><tbody><tr><td>75 g OGTT</td><td>空腹／1 h／2 h：92／180／153 mg/dL；任一項達門檻</td><td>NICE：空腹 ≥5.6 或 2 h ≥7.8 mmol/L；無 1 h 診斷值</td><td>110.7.1 起公費：妊娠 24–28 週 75 g 一步法（空腹、1 h、2 h）；IADPSG 92／180／153 mg/dL，任一項即診斷</td></tr><tr><td>100 g OGTT</td><td>95／180／155／140 mg/dL；此工具採至少 2 項異常</td><td>不是 NICE 75 g 路徑；單項異常需依產科流程評估</td><td>不在公費補助項目內（50 g／100 g 兩步法亦同）；依院內流程</td></tr><tr><td>孕期血糖目標</td><td>空腹 &lt;95、餐後 1 h &lt;140 或 2 h &lt;120 mg/dL</td><td>NICE：空腹 &lt;5.3、1 h &lt;7.8 或 2 h &lt;6.4 mmol/L；須避免低血糖</td><td>空腹 60–95、餐後 1 h 60–140、2 h 60–120 mg/dL</td></tr><tr><td>GDM 藥物</td><td>需要藥物時優先胰島素；metformin／glyburide 非第一線</td><td>NICE：生活調整 1–2 週未達標可用 metformin；WHO：metformin 或胰島素皆可依情境選擇</td><td>國健署資料先以飲食、運動控制，無法控制時接受醫療處置；本工具不判定健保用藥給付</td></tr><tr><td>產後檢驗</td><td>4–12 週 75 g OGTT，採非孕期標準</td><td>NICE：6–13 週空腹血糖，不常規使用 OGTT；其後依流程安排</td><td>產後 4–12 週，空腹 8 小時 75 g OGTT</td></tr></tbody></table></div><div class="note-block">NICE 原始門檻為 mmol/L；本工具 mg/dL 顯示採 ×18 的換算值，例如 5.6 → 100.8、7.8 → 140.4。請優先使用檢驗報告的原始單位，勿來回四捨五入。ADA 則依指引列出的各單位門檻判讀。</div><div id="references"></div><div class="band"><h3>適用範圍與版本</h3><p>對象為醫師及照護團隊；用於教學、檢驗門檻比對與共同決策。未涵蓋所有罕見糖尿病、急救處方或個人化胰島素劑量。未經獨立臨床驗證，不替代醫師判斷或院內流程。</p><p>本版查核日期：2026-10-30。綠色「台灣規範」區塊依國健署公費產檢與衛教資料，與藍色「國際規範」分開呈現；台灣藥品仿單、院內可用藥物與健保給付屬不同層次，本版不判定台灣健保資格。</p><p>輸入只保留於本頁記憶體，不使用帳號、雲端病歷或瀏覽器永久儲存；重整後清除。不要輸入可識別個人的資料。</p></div></section>
 </div><footer class="page-foot"><div>輔助臨床判斷 · 不儲存病人資料<div id="status" class="status" role="status"></div></div><div class="actions"><button type="button" id="copy-summary">複製本頁摘要</button><button type="button" id="print-summary">列印摘要</button></div></footer></main></div><script>(()=>{
@@ -207,11 +266,11 @@ function postpartumWindow(date){
 
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const icons={diagnosis:'M8 5H5v16h14V5h-3 M9 3h6v4H9z M8 11h8 M8 15h8',care:'M8 7a4 4 0 1 0 8 0a4 4 0 1 0-8 0 M4 22v-3a8 7 0 0 1 16 0v3z',glucose:'M4 21V13h3v8z M11 21V8h3v13z M18 21V3h3v18z',postpartum:'M4 5h16v16H4z M4 10h16 M8 2v6 M16 2v6',cases:'M6 3h8l5 5v13H6z M14 3v6h5 M9 13h7 M9 17h7',sources:'M12 5c-4-3-8-2-9-1v16c3-2 6-1 9 1c3-2 6-3 9-1V4c-3-2-6-1-9 1z M12 5v16'};
-const sections={diagnosis:'診斷與分流',care:'孕前與孕期照護',glucose:'血糖評估',postpartum:'產後追蹤',cases:'學習病例',sources:'指引與差異'};
+const icons={diagnosis:'M8 5H5v16h14V5h-3 M9 3h6v4H9z M8 11h8 M8 15h8',care:'M8 7a4 4 0 1 0 8 0a4 4 0 1 0-8 0 M4 22v-3a8 7 0 0 1 16 0v3z',glucose:'M4 21V13h3v8z M11 21V8h3v13z M18 21V3h3v18z',postpartum:'M4 5h16v16H4z M4 10h16 M8 2v6 M16 2v6',cases:'M6 3h8l5 5v13H6z M14 3v6h5 M9 13h7 M9 17h7',quiz:'M9 9a3 3 0 1 1 4.5 2.6c-1 .6-1.5 1.2-1.5 2.4 M12 18h.01 M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0',map:'M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0 M3 5a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M17 5a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M3 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M17 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M6.5 6.5l3.2 3.5 M17.5 6.5l-3.2 3.5 M6.5 17.5l3.2-3.5 M17.5 17.5l-3.2-3.5',sources:'M12 5c-4-3-8-2-9-1v16c3-2 6-1 9 1c3-2 6-3 9-1V4c-3-2-6-1-9 1z M12 5v16'};
+const sections={diagnosis:'診斷與分流',care:'孕前與孕期照護',glucose:'血糖評估',postpartum:'產後追蹤',cases:'學習病例',quiz:'考題',map:'心智圖',sources:'指引與差異'};
 let current='diagnosis',lastDx=null;
 $('nav').innerHTML=Object.entries(sections).map(([id,label])=>`<button type="button" data-view="${id}" ${id===current?'class="active" aria-current="page"':''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icons[id]}"/></svg>${label}</button>`).join('');
-function go(id,focus=true){if(!sections[id])id='diagnosis';current=id;document.querySelectorAll('.view').forEach(el=>el.hidden=el.id!==id);document.querySelectorAll('[data-view]').forEach(el=>{el.classList.toggle('active',el.dataset.view===id);if(el.dataset.view===id)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current')});$('current-name').textContent=sections[id];$('status').textContent='';try{history.replaceState(null,'','#'+id)}catch{/* Local-file viewers may restrict history; in-page navigation remains usable. */}if(focus){$('main-content').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'})}}
+function go(id,focus=true){if(!sections[id])id='diagnosis';current=id;document.querySelectorAll('.view').forEach(el=>el.hidden=el.id!==id);document.querySelectorAll('[data-view]').forEach(el=>{el.classList.toggle('active',el.dataset.view===id);if(el.dataset.view===id)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current')});const activeNav=$('nav').querySelector('.active');if(activeNav)$('nav').scrollLeft=activeNav.offsetLeft-$('nav').offsetLeft-16;$('current-name').textContent=sections[id];$('status').textContent='';try{history.replaceState(null,'','#'+id)}catch{/* Local-file viewers may restrict history; in-page navigation remains usable. */}if(focus){$('main-content').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'})}}
 document.addEventListener('click',e=>{const nav=e.target.closest('[data-view],[data-go]');if(nav){e.preventDefault();go(nav.dataset.view||nav.dataset.go)}});
 const unitLabel=id=>$(id).value==='mg'?'mg/dL':'mmol/L';
 function clearResult(){lastDx=null;$('dx-result').className='panel result info empty';$('dx-result').innerHTML='<div class="empty-symbol" aria-hidden="true">↗</div><h2>等待判讀</h2><p>請確認檢驗方案、孕週與數值後，按「判讀結果」。</p>';$('dx-error').textContent='';document.querySelectorAll('.step').forEach((el,i)=>el.classList.toggle('active',i===0));}
@@ -296,5 +355,121 @@ $('print-summary').addEventListener('click',()=>window.print());
 $('copy-summary').addEventListener('click',async()=>{const section=$(current);const selections=[...section.querySelectorAll('input,select,textarea')].filter(e=>e.closest('[hidden]')===null).map(e=>{const label=section.querySelector(`label[for="${e.id}"]`)?.textContent||e.closest('label')?.textContent||e.id;return `${label}: ${e.type==='checkbox'?(e.checked?'是':'否'):e.tagName==='SELECT'?e.selectedOptions[0].text:e.value||'未填'}`}).join('\n');const text=`孕期糖尿病診療導航｜${sections[current]}\n查核：2026-10-30\n${selections}\n\n${section.innerText}\n此為決策輔助，須由醫師確認。`;try{await navigator.clipboard.writeText(text);$('status').textContent='已複製本頁輸入與摘要。';}catch{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.top='0';document.body.append(t);t.select();const ok=document.execCommand('copy');t.remove();$('status').textContent=ok?'已複製本頁摘要。':'瀏覽器限制複製；請使用列印摘要。';}});
 fields();renderCare();targetNote();go(location.hash.slice(1)||'diagnosis',false);
 
+})();</script><script>(()=>{
+// Teaching content (v1.3). Tests read the QUIZ and MAP blocks and check `check` fields against clinical.mjs.
+/*QUIZ-START*/
+const ADA2='ADA 2026 §2',ADA15='ADA 2026 §15',NICE='NICE NG3',HPA='國健署';
+const QUIZ=[
+{lv:'basic',topic:'75 g 判讀',stem:'孕 26 週，75 g OGTT：空腹 92、1 小時 170、2 小時 148 mg/dL，無急性症狀。依 ADA／IADPSG 如何判讀？',opts:['未達：一步法需至少 2 項異常','未達：空腹須「大於」92 才算異常','符合 GDM：任一項達門檻（≥）即可','無法判讀：需再做 100 g OGTT'],a:2,why:'門檻是 ≥92／≥180／≥153 mg/dL，一項達到就診斷，空腹剛好 92 已符合。「至少 2 項」是 100 g Carpenter–Coustan 的規則。診斷門檻 92 與居家空腹目標 <95 是兩回事。',src:[['intl',ADA2+' 表 2.8'],['tw',HPA+'：同採 92／180／153']],check:{fn:'diagnose',input:{protocol:'ada75',week:26,unit:'mg',values:[92,170,148]},kind:'success',n:1}},
+{lv:'basic',topic:'兩步法',stem:'孕 26 週採兩步法，50 g GLT 1 小時血糖 150 mg/dL（院內門檻 140）。下一步？',opts:['診斷 GDM，開始居家血糖監測','安排空腹 100 g OGTT 確認','視為隨機血糖，改走糖尿病確認流程','未達 200 mg/dL，回到常規產檢'],a:1,why:'50 g GLT 是不需空腹的篩檢，陽性要接 100 g OGTT 才能診斷。糖水負荷後的數值也不能當隨機血糖使用。ADA 列出的初篩門檻有 130、135、140 三種。',src:[['intl',ADA2+' 表 2.8']],check:{fn:'diagnose',input:{protocol:'screen50',week:26,unit:'mg',values:[150],screenCut:140},kind:'warning',n:1}},
+{lv:'basic',topic:'100 g 判讀',stem:'孕 27 週，100 g OGTT：96／170／150／130 mg/dL（門檻 95／180／155／140）。依 Carpenter–Coustan 如何判讀？',opts:['符合 GDM：Carpenter–Coustan 只要一項異常','完全正常：之後不需再評估血糖','達明顯糖尿病範圍：需確認並分型','未達至少 2 項，但單項異常仍依院內流程評估'],a:3,why:'只有空腹 96 達門檻，未達「至少 2 項」。ADA 也提到 ACOG 認為一項升高可用於診斷，所以單項異常不能直接當作正常，需依院內流程決定。',src:[['intl',ADA2+' 表 2.8 與內文']],check:{fn:'diagnose',input:{protocol:'cc100',week:27,unit:'mg',values:[96,170,150,130]},kind:'warning',n:1}},
+{lv:'basic',topic:'檢驗條件',stem:'下列哪一種條件符合 ADA 對 GDM 75 g OGTT 的要求？',opts:['早上空腹至少 8 小時後，抽靜脈血測血漿葡萄糖','指尖血糖機於空腹、1 小時、2 小時各量一次','配戴 CGM，以喝糖水後的感測值判讀','不必空腹，下午門診喝糖水後 1 小時抽血'],a:0,why:'診斷以血漿葡萄糖為準，早上隔夜空腹至少 8 小時後進行。指尖血糖與 CGM 不能取代。不需空腹的是 50 g GLT，那是篩檢。',src:[['intl',ADA2+' 一步法']]},
+{lv:'basic',topic:'血糖目標',stem:'孕 30 週 GDM 的居家血糖，依 ADA 2026 的目標是？',opts:['空腹 <92、餐後 1 小時 <180、2 小時 <153 mg/dL','空腹 <126、餐後 2 小時 <200 mg/dL','空腹 <95，且餐後 1 小時 <140 或 2 小時 <120 mg/dL','空腹 <110、餐後 2 小時 <155 mg/dL'],a:2,why:'選項 A 是 OGTT 診斷門檻，B 是明顯糖尿病門檻，D 接近 ADA 列出的孕前目標。國健署衛教上限相同（60–95／60–140／60–120）；NICE 為 <5.3、1 小時 <7.8 或 2 小時 <6.4 mmol/L，2 小時略嚴。',src:[['intl',ADA15+' 15.8'],['intl',NICE+' 1.3.5'],['tw',HPA+'衛教目標']]},
+{lv:'basic',topic:'台灣公費',stem:'在台灣，國健署公費妊娠糖尿病篩檢（110.7.1 起）的內容是？',opts:['妊娠 12–16 週，50 g 初篩，陽性再做 100 g','第一次產檢抽 HbA1c，≥5.9% 再做 OGTT','妊娠 24–28 週，50 g 初篩，≥140 mg/dL 為陽性','妊娠 24–28 週，75 g OGTT，採空腹、1 小時、2 小時三點'],a:3,why:'公費項目為妊娠 24–28 週的 75 g 一步法三點血漿葡萄糖，採 IADPSG 門檻，任一項達標即診斷。50 g／100 g 兩步法不在補助流程內。',src:[['tw',HPA+'孕婦產前檢查補助']]},
+{lv:'basic',topic:'孕前用藥',stem:'第 2 型糖尿病，服用 enalapril 與 atorvastatin，驗孕剛陽性（孕 6 週）。最恰當的處置？',opts:['儘速安排停用 enalapril 並換成孕期適用降壓藥，statin 原則上也停用','兩藥都沿用，等確認胎心後的下次產檢再討論','只停 statin，enalapril 有腎臟保護可續用到分娩','請病人先自行停掉所有藥物，下次回診再評估'],a:0,why:'ACEi／ARB 應在孕前或確認懷孕時儘快停用，避免第二、三孕期胎兒毒性（腎發育不良、羊水過少等）；ADA 列舉的孕期適用藥物包括 methyldopa、nifedipine、labetalol。Statin 多數應停，家族性高膽固醇血症或曾有 ASCVD 等情境可共同決策。全部自行停藥則可能讓血壓與血糖失控。',src:[['intl',ADA15+' 15.25a–b'],['intl',NICE+' 1.1.24–1.1.25']]},
+{lv:'basic',topic:'子癲前症預防',stem:'第 1 型糖尿病，孕 14 週，無阿斯匹靈禁忌。依 ADA 2026，預防子癲前症的建議是？',opts:['第三孕期起每日 81 mg','孕 12–16 週起，低劑量 100–150 mg／日','血壓達 140/90 mmHg 後才開始','第 1 型不列入，僅合併慢性高血壓者使用'],a:1,why:'既有第 1／2 型糖尿病都建議（證據等級 E）；162 mg／日也可接受。ADA 指出 <100 mg 預防效果不佳。GDM 不是自動適用，需有一項高風險因子或多項中度風險因子。',src:[['intl',ADA15+' 15.23']]},
+{lv:'basic',topic:'產後 OGTT',stem:'GDM 產後第 8 週，空腹 75 g OGTT：空腹 104、2 小時 152 mg/dL。如何判讀？',opts:['仍符合 GDM，因為空腹 ≥92','達糖尿病範圍，需開始治療','糖尿病前期範圍，採非孕期標準','全部正常，下次懷孕前再查即可'],a:2,why:'產後用非孕期標準：空腹 100–125 為 IFG，2 小時 140–199 為 IGT。過重或肥胖且有糖尿病前期者，ADA 建議強化生活介入及／或 metformin。之後每 1–3 年終身篩檢。',src:[['intl',ADA15+' 15.30–15.32'],['intl',ADA2]],check:{fn:'postpartum',input:{unit:'mg',fasting:104,two:152},kind:'warning'}},
+{lv:'basic',topic:'產後用藥',stem:'GDM 孕期使用胰島素，剛順利生產，沒有其他持續高血糖的線索。生產後的用藥原則？',opts:['通常停用，轉出前再驗血糖排除持續高血糖','維持原胰島素劑量，直到產後 4–12 週 OGTT','胰島素減半，哺乳結束才停','改用 metformin 6 週，再安排 OGTT'],a:0,why:'胎盤娩出後胰島素阻抗快速下降。NICE 建議 GDM 產後立即停用降血糖治療，並在轉回社區前驗血糖；ADA 也指出 GDM 產後通常不需藥物。第 1 型則是減量且不能停基礎胰島素。',src:[['intl',NICE+' 1.6.3、1.6.8'],['intl',ADA15+' 產後治療']]},
+{lv:'adv',topic:'早期異常血糖',stem:'孕 10 週首次產檢，空腹 118 mg/dL、HbA1c 6.1%，無症狀。依 ADA 2026 最恰當的處置？',opts:['已達明顯糖尿病範圍，確認後按第 2 型處理','早期異常糖代謝：營養諮詢、規律測空腹血糖；空腹常 ≥110 時加強監測，並共同決定是否治療','空腹已 ≥92，可直接診斷 GDM 並開始胰島素','未達糖尿病即視為正常，24–28 週前不需處置'],a:1,why:'<15 週的異常糖代謝定義為空腹 110–125 或 HbA1c 5.9–6.4%。ADA 建議營養諮詢與每週 3–4 次空腹血糖；若多數 ≥110 可改每日測並考慮治療，治療時用標準孕期目標。IADPSG 門檻並非由孕期前半的資料推導，不能拿來早期診斷。',src:[['intl',ADA2+' 2.31b'],['intl',ADA15+' 早期高血糖']],check:{fn:'diagnose',input:{protocol:'early',week:10,unit:'mg',values:[118,6.1,'']},kind:'warning'}},
+{lv:'adv',topic:'實證解讀',stem:'關於 TOBOGM 試驗（早期 GDM 治療），下列解讀何者正確？',opts:['早期治療降低所有族群的不良結局，所有早期異常血糖都應治療','複合結局的改善主要來自巨嬰減少','納入空腹 110–125 mg/dL 者，證實這群獲益最大','對照組近三分之一到 24–28 週已不符合 GDM，且試驗排除空腹 ≥110 mg/dL 者'],a:3,why:'複合結局 24.9% vs 30.5%（RR 0.82，95% CI 0.68–0.98），主要由新生兒呼吸窘迫的差異帶動。低血糖範圍者接受治療可能增加 SGA，空腹 ≥110 者因安全考量被排除，這群的利弊未被評估。ADA 的結論是早期治療的效益仍不確定。',src:[['intl',ADA15+' 早期高血糖']]},
+{lv:'adv',topic:'明顯糖尿病',stem:'孕 29 週才首次做 75 g OGTT：空腹 128、1 小時 212、2 小時 205 mg/dL，無症狀。最恰當的處置？',opts:['達明顯糖尿病評估門檻：確認與分型、評估併發症，並立即與專科安排治療','符合 GDM，先飲食運動 1–2 週再評估','已超過 28 週，結果無效，需重新抽血','先按一般 GDM 追蹤，產後 OGTT 再決定類型'],a:0,why:'空腹 ≥126 或 2 小時 ≥200 優先於 GDM 判讀。空腹 128 mg/dL 約 7.1 mmol/L，NICE 對診斷時空腹 ≥7.0 建議立即胰島素（可合併 metformin）及飲食運動。無症狀時需依標準確認，但不應因此延後處理。超過 28 週只影響篩檢時程，不會讓結果無效。',src:[['intl',ADA2],['intl',NICE+' 1.2.22']],check:{fn:'diagnose',input:{protocol:'ada75',week:29,unit:'mg',values:[128,212,205]},kind:'danger'}},
+{lv:'adv',topic:'藥物選擇',stem:'孕 32 週 GDM，飲食運動 2 週空腹仍超標；合併慢性高血壓，超音波估計胎兒體重低於第 10 百分位。病人問能否吃 metformin 而不打針。最佳回應？',opts:['可以：NICE 路徑未達標就用 metformin，不需其他考量','可改用 glyburide：它不會通過胎盤','建議胰島素：高血壓與生長受限風險是 ADA 指出不宜用 metformin 的情境','再延長飲食控制到足月，避免任何藥物'],a:2,why:'ADA 指出胎盤功能不全時可能有生長受限或酸中毒的疑慮，metformin 不應用於高血壓、子癲前症或有 IUGR 風險者。NICE 雖以 metformin 為下一步，也有禁忌或不接受時改用胰島素的路徑。Glyburide 會通過胎盤（臍帶血濃度約母體 50–70%），並與較多新生兒低血糖相關。',src:[['intl',ADA15+' 15.17、15.21'],['intl',NICE+' 1.2.19–1.2.20']]},
+{lv:'adv',topic:'指引差異',stem:'孕 26 週，75 g OGTT：空腹 5.4、1 小時 9.5、2 小時 7.5 mmol/L。ADA／IADPSG 與 NICE 的判讀分別是？',opts:['兩者都診斷 GDM','ADA／IADPSG 達門檻、NICE 未達；依院內採用的單一標準判讀，不混用','兩者都未達，因為 1 小時 <10','NICE 達門檻、ADA／IADPSG 未達'],a:1,why:'IADPSG 空腹門檻 5.1，5.4 已達。NICE 門檻是空腹 5.6 或 2 小時 7.8，且沒有 1 小時值，兩項都未達。國健署公費路徑同採 IADPSG，空腹 5.4 mmol/L 約 97 mg/dL，也會判定 GDM。',src:[['intl',ADA2+' 表 2.8'],['intl',NICE+' 1.2.8'],['tw',HPA+'：IADPSG']],check:[{fn:'diagnose',input:{protocol:'ada75',week:26,unit:'mmol',values:[5.4,9.5,7.5]},kind:'success',n:1},{fn:'diagnose',input:{protocol:'nice75',week:26,unit:'mmol',values:[5.4,7.5]},kind:'info',n:0}]},
+{lv:'adv',topic:'胰島素需求',stem:'第 1 型糖尿病，孕 33 週，過去一週進食正常，胰島素需求卻明顯下降並反覆低血糖。最恰當的想法？',opts:['足月前的正常生理，下調劑量即可','胰島素敏感度恢復，可減少血糖監測','驗 HbA1c，若 <6% 代表控制良好，不必處理','除調整劑量外，應儘快評估胎兒與胎盤功能'],a:3,why:'孕 16 週起需求約每週增加 5%，到 36 週，之後才趨平。此時需求快速明顯下降，可能代表胎盤功能不全（ADA 註明資料並不一致），不能只當成劑量問題。',src:[['intl',ADA15+' 胰島素']]},
+{lv:'adv',topic:'孕期 DKA',stem:'第 1 型糖尿病，孕 28 週，腸胃炎嘔吐一天，自行停用基礎胰島素。血糖 175 mg/dL，呼吸深快。最恰當的處置？',opts:['血糖不到 250 可排除 DKA，給止吐後回家','吃得少就續停基礎胰島素，門診追蹤','立即測血酮並按疑似 DKA 住院，由內科與產科共同照護，常需含葡萄糖輸液加胰島素滴注','先安排 OGTT 了解目前血糖控制'],a:2,why:'懷孕是生酮狀態，DKA 可在較低血糖發生，且死產風險高。NICE 要求緊急測血酮，疑似 DKA 立即收入 level 2 重症照護；ADA 指出無法進食者常需含葡萄糖輸液與胰島素滴注，以滿足胎盤與胎兒的碳水需求。',src:[['intl',ADA15+' 特殊考量'],['intl',NICE+' 1.3.23–1.3.24']],check:{fn:'diagnose',input:{protocol:'ada75',week:28,unit:'mg',values:[],acute:true},kind:'danger'}},
+{lv:'adv',topic:'視網膜病變',stem:'第 1 型糖尿病，已知視網膜病變，孕 8 週才就診，HbA1c 9%。關於血糖與眼科安排，何者正確？',opts:['不因視網膜病變延後改善血糖；安排眼底檢查，依 NICE 於 16–20 週加做、28 週再查','先暫緩強化血糖，等眼科治療完成再降 HbA1c','視網膜病變屬陰道產禁忌，應計畫剖腹產','眼底檢查孕前一次即可，孕期不需重複'],a:0,why:'NICE 的「先完成眼科評估再快速改善血糖」是孕前建議（1.1.31）；已懷孕且 HbA1c 高時，視網膜病變不是快速改善血糖的禁忌（1.3.26），也不是陰道產禁忌（1.3.27）。ADA 提醒快速改善血糖可能惡化視網膜病變，建議每孕期檢查，並依程度追蹤到產後 1 年。',src:[['intl',NICE+' 1.1.31、1.3.25–1.3.27'],['intl',ADA15+' 15.7']]},
+{lv:'adv',topic:'產後檢驗',stem:'GDM 產後第 9 週只驗 HbA1c，結果 5.4%，病人問可否就此放心。最恰當的回應？',opts:['可以：<5.7% 已排除，3 年後再查','不足以排除：此時 HbA1c 可能偏低，ADA 仍建議 75 g OGTT','應改用孕期 <6% 目標來判讀','再驗一次隨機血糖，<200 mg/dL 即正常'],a:1,why:'紅血球更新與分娩失血可能使 HbA1c 偏低，OGTT 對糖尿病前期與糖尿病都較敏感。無法或不願做 OGTT 者，ADA 可考慮產後 6–12 個月驗 HbA1c。NICE 路徑不同：6–13 週驗空腹血糖、不常規 OGTT；13 週後空腹血糖不可行時才用 HbA1c。國健署與 ADA 同為 4–12 週 75 g OGTT。',src:[['intl',ADA15+' GDM 產後'],['intl',NICE+' 1.6.11'],['tw',HPA+'：產後 4–12 週 OGTT']]},
+{lv:'adv',topic:'早產處置',stem:'第 1 型糖尿病使用胰島素，孕 30 週有早產徵兆，產科計畫給產前類固醇並考慮安胎。依 NICE，何者正確？',opts:['糖尿病是類固醇禁忌，應避免使用','可給類固醇，胰島素維持不動，血糖上升不必處理','安胎首選 betamimetics，對血糖影響小','糖尿病不是禁忌；依既定流程追加胰島素並密切監測，安胎不用 betamimetics'],a:3,why:'NICE 明確指出糖尿病不是安胎或產前類固醇的禁忌，使用胰島素者要依既定流程追加胰島素並密切監測，且不使用 betamimetics 安胎。',src:[['intl',NICE+' 1.3.41–1.3.43']]}
+];
+/*QUIZ-END*/
+/*MAP-START*/
+const MAP={left:[
+{cls:'b1',title:'孕前與早孕',go:['care','孕前與孕期照護'],leaves:[
+ ['孕前 HbA1c','理想 <6.5%，同時避免嚴重低血糖；NICE：>10% 強烈建議先不懷孕',['ADA','NICE']],
+ ['葉酸','ADA 例行 400–800 µg／日；NICE 既有糖尿病 5 mg／日至孕 12 週',['ADA','NICE']],
+ ['孕前換藥','ACEi／ARB、statin 多數停用；GLP-1 類孕前停用，semaglutide 至少停 2 個月',['ADA','NICE']],
+ ['<15 週：明顯糖尿病','空腹 ≥126、HbA1c ≥6.5%；隨機 ≥200 且有症狀',['ADA']],
+ ['<15 週：異常糖代謝','空腹 110–125 或 HbA1c 5.9–6.4%；非 GDM 診斷，治療效益仍不確定',['ADA']]]},
+{cls:'b2',title:'24–28 週診斷',go:['diagnosis','診斷與分流'],leaves:[
+ ['75 g 一步法','92／180／153 mg/dL，任一項即診斷',['ADA','國健署']],
+ ['台灣公費','110.7.1 起，妊娠 24–28 週 75 g 三點 OGTT',['國健署']],
+ ['NICE 75 g','空腹 ≥5.6 或 2 小時 ≥7.8 mmol/L；無 1 小時值',['NICE']],
+ ['兩步法','50 g 門檻 130／135／140，陽性接 100 g；95／180／155／140 至少 2 項',['ADA']],
+ ['優先排除明顯糖尿病','空腹 ≥126 或 75 g 2 小時 ≥200，確認、分型，不只當 GDM',['ADA','NICE']],
+ ['檢驗條件','靜脈血漿；隔夜空腹 ≥8 小時；指尖血糖與 CGM 不能取代',['ADA']]]},
+{cls:'b3',title:'急症警訊',go:['diagnosis','診斷與分流'],leaves:[
+ ['DKA','可發生於較低血糖，死產風險高；生病或高血糖時緊急測血酮',['ADA','NICE']],
+ ['DKA 處置','立即住院 level 2 重症照護；無法進食者常需葡萄糖輸液加胰島素滴注',['NICE','ADA']],
+ ['低血糖','血糖 <70 mg/dL，感測值 <63 mg/dL；第一孕期與產後風險較高',['ADA']],
+ ['嚴重低血糖','無法吞嚥或意識改變不口服，立即急救；第 1 型提供 glucagon',['NICE']]]}
+],right:[
+{cls:'b4',title:'目標與監測',go:['glucose','血糖評估'],leaves:[
+ ['ADA 目標','空腹 <95；餐後 1 小時 <140 或 2 小時 <120 mg/dL',['ADA']],
+ ['NICE 目標','空腹 <5.3；餐後 1 小時 <7.8 或 2 小時 <6.4 mmol/L；用胰島素者維持 >4',['NICE']],
+ ['台灣衛教目標','空腹 60–95；餐後 1 小時 60–140；2 小時 60–120 mg/dL',['國健署']],
+ ['HbA1c','理想 <6%，避免低血糖時可放寬至 <7%；屬次要指標，GMI 不可替代',['ADA']],
+ ['CGM','第 1 型建議使用；63–140 mg/dL >70%，<63 <4%，<54 <1%，>140 <25%',['ADA']]]},
+{cls:'b5',title:'治療',go:['care','孕前與孕期照護'],leaves:[
+ ['生活調整','GDM 治療起點；碳水至少 175 g、蛋白 71 g、纖維 28 g／日；每週 150 分鐘中等活動',['ADA']],
+ ['胰島素','第 1 型必須；ADA 對 GDM 與第 2 型優先使用',['ADA']],
+ ['Metformin：指引不同','ADA 非第一線，會通過胎盤；NICE 生活調整 1–2 週未達標即可用',['ADA','NICE']],
+ ['Metformin：避免','高血壓、子癲前症或有 IUGR 風險者',['ADA']],
+ ['確診時空腹偏高','≥7.0 mmol/L 立即胰島素；6.0–6.9 合併巨嬰或羊水過多可考慮',['NICE']],
+ ['Aspirin','第 1／2 型孕 12–16 週起 100–150 mg／日；GDM 依風險因子',['ADA']],
+ ['血壓','慢性高血壓以 140/90 mmHg 為開始與調藥門檻；<90/60 減藥',['ADA']]]},
+{cls:'b6',title:'生產與產後',go:['postpartum','產後追蹤'],leaves:[
+ ['生產時機','第 1／2 型 37+0 至 38+6 週；無併發症 GDM 不晚於 40+6 週',['NICE']],
+ ['產程血糖','每小時監測，維持 4–7 mmol/L；未達標用葡萄糖加胰島素滴注',['NICE']],
+ ['新生兒','生後 30 分鐘內餵食，2–4 小時常規驗血糖',['NICE']],
+ ['產後用藥','GDM 立即停藥；既有糖尿病立即減量，第 1 型不停基礎胰島素',['NICE','ADA']],
+ ['產後檢驗','4–12 週 75 g OGTT，非孕期標準 100／140、126／200 mg/dL',['ADA','國健署']],
+ ['NICE 路徑','6–13 週空腹血糖，不常規 OGTT；陰性者每年 HbA1c',['NICE']],
+ ['長期','每 1–3 年終身篩檢；過重或肥胖合併前期者強化生活介入及／或 metformin',['ADA']]]}
+]};
+/*MAP-END*/
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const srcTag=([k,s])=>`<span class="tag ${k}">${esc(s)}</span>`;
+const letter=i=>'ABCD'[i];
+let filter='all',picks={};
+function renderQuiz(){
+ $('q-filter').innerHTML=[['all','全部 20'],['basic','基礎 10'],['adv','高階 10']].map(([k,t])=>`<button type="button" data-f="${k}" class="${filter===k?'active':''}" aria-pressed="${filter===k}">${t}</button>`).join('');
+ $('q-list').innerHTML=QUIZ.map((q,i)=>{
+  if(filter!=='all'&&q.lv!==filter)return '';
+  const p=picks[i],done=p!==undefined;
+  return `<article class="q-card" data-q="${i}"><div class="q-head"><span class="q-num">Q${i+1}</span><span class="q-lv ${q.lv}">${q.lv==='adv'?'高階':'基礎'}</span><span>${esc(q.topic)}</span></div><p class="q-stem">${esc(q.stem)}</p>${q.opts.map((o,j)=>`<button type="button" class="q-opt${done&&j===q.a?' right':done&&j===p?' wrong':''}" data-o="${j}"${done?' disabled':''}><b>${letter(j)}</b><span>${esc(o)}</span></button>`).join('')}${done?`<div class="q-why" role="status"><strong class="${p===q.a?'ok':'no'}">${p===q.a?'答對':'答錯'}，正確答案 ${letter(q.a)}。</strong> ${esc(q.why)}<div class="q-src">${q.src.map(srcTag).join('')}</div></div>`:''}</article>`;
+ }).join('');
+ const ids=Object.keys(picks).map(Number).filter(i=>filter==='all'||QUIZ[i].lv===filter),n=QUIZ.filter(q=>filter==='all'||q.lv===filter).length;
+ $('q-score').textContent=`已答 ${ids.length} / ${n}，答對 ${ids.filter(i=>picks[i]===QUIZ[i].a).length}`;
+}
+$('q-filter').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(b){filter=b.dataset.f;renderQuiz()}});
+$('q-list').addEventListener('click',e=>{const b=e.target.closest('[data-o]');if(!b)return;const i=Number(b.closest('[data-q]').dataset.q),o=Number(b.dataset.o);picks[i]=o;renderQuiz();document.querySelector(`[data-q="${i}"] .q-why`)?.scrollIntoView({block:'nearest'})});
+$('q-reset').addEventListener('click',()=>{picks={};renderQuiz();window.scrollTo({top:$('q-list').offsetTop-20,behavior:'instant'})});
+renderQuiz();
+const twTag='國健署';
+const branch=(b,k)=>`<section class="mm-branch ${b.cls}" data-c="${k}"><button type="button" class="mm-node" aria-expanded="true"><span>${esc(b.title)}</span><i aria-hidden="true">▸</i></button><ul class="mm-leaves">${b.leaves.map(([t,d,tags])=>`<li class="mm-leaf"><strong>${esc(t)}</strong>${esc(d)}<div>${tags.map(x=>`<span class="tag ${x===twTag?'tw':'intl'}">${esc(x)}</span>`).join('')}</div></li>`).join('')}<li class="mm-leaf go"><a href="#${b.go[0]}" data-go="${b.go[0]}">到「${esc(b.go[1])}」操作 →</a></li></ul></section>`;
+$('mm').innerHTML=`<svg class="mm-links" aria-hidden="true"></svg><div class="mm-side left">${MAP.left.map(b=>branch(b,'l')).join('')}</div><div class="mm-center">孕期糖尿病<small>診斷與治療</small></div><div class="mm-side right">${MAP.right.map(b=>branch(b,'r')).join('')}</div>`;
+// Connectors exist only in the two-sided layout. The observer also fires when the hidden tab is first shown.
+function drawMap(){
+ const mm=$('mm'),svg=mm.querySelector('.mm-links');
+ if(!mm.offsetWidth||getComputedStyle(svg).display==='none')return;
+ const box=mm.getBoundingClientRect(),c=mm.querySelector('.mm-center').getBoundingClientRect();
+ const curve=(x1,y1,x2,y2,col)=>{const m=(x1+x2)/2;return `<path d="M${x1} ${y1}C${m} ${y1} ${m} ${y2} ${x2} ${y2}" stroke="${col}"/>`};
+ let out='';
+ mm.querySelectorAll('.mm-branch').forEach(b=>{
+  const left=b.dataset.c==='l',col=getComputedStyle(b).getPropertyValue('--c').trim(),n=b.querySelector('.mm-node').getBoundingClientRect();
+  const ny=n.top+n.height/2-box.top,cy=c.top+c.height/2-box.top;
+  out+=left?curve(c.left-box.left,cy,n.right-box.left,ny,col):curve(c.right-box.left,cy,n.left-box.left,ny,col);
+  const ul=b.querySelector('.mm-leaves');
+  if(ul.hidden)return;
+  ul.querySelectorAll('.mm-leaf').forEach(l=>{const r=l.getBoundingClientRect(),y=r.top+r.height/2-box.top;out+=left?curve(n.left-box.left,ny,r.right-box.left,y,col):curve(n.right-box.left,ny,r.left-box.left,y,col)});
+ });
+ svg.innerHTML=out;
+}
+function setBranch(b,open){b.querySelector('.mm-leaves').hidden=!open;b.querySelector('.mm-node').setAttribute('aria-expanded',open)}
+$('mm').addEventListener('click',e=>{const n=e.target.closest('.mm-node');if(n){const b=n.closest('.mm-branch');setBranch(b,b.querySelector('.mm-leaves').hidden);drawMap()}});
+$('mm-open').addEventListener('click',()=>{document.querySelectorAll('.mm-branch').forEach(b=>setBranch(b,true));drawMap()});
+$('mm-close').addEventListener('click',()=>{document.querySelectorAll('.mm-branch').forEach(b=>setBranch(b,false));drawMap()});
+new ResizeObserver(drawMap).observe($('mm'));
 })();</script></body></html>
 

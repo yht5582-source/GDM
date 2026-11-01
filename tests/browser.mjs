@@ -51,14 +51,38 @@ try {
     assert.ok(result.length>40);
     if(i===4) assert.match(result,/先處理急症/);
   }
+  await page.locator('[data-view=quiz]').click();
+  assert.equal(await page.locator('.q-card').count(),20);
+  await page.locator('[data-f=adv]').click();
+  assert.equal(await page.locator('.q-card').count(),10);
+  await page.locator('[data-f=all]').click();
+  await page.locator('[data-q="0"] [data-o="2"]').click();
+  assert.match(await page.locator('[data-q="0"] .q-why').innerText(),/答對，正確答案 C/);
+  await page.locator('[data-q="1"] [data-o="0"]').click();
+  assert.match(await page.locator('[data-q="1"] .q-why').innerText(),/答錯，正確答案 B/);
+  assert.equal(await page.locator('[data-q="1"] .q-opt.right').count(),1);
+  assert.match(await page.locator('#q-score').innerText(),/已答 2 \/ 20，答對 1/);
+  await page.locator('#q-reset').click();
+  assert.equal(await page.locator('.q-why').count(),0);
+  await page.locator('[data-view=map]').click();
+  assert.equal(await page.locator('.mm-branch').count(),6);
+  const leaves=await page.locator('.mm-leaf').count();
+  await page.waitForFunction(n=>document.querySelectorAll('.mm-links path').length===n,leaves+6);
+  await page.locator('#mm-close').click();
+  assert.equal(await page.locator('.mm-links path').count(),6);
+  await page.locator('.mm-node').first().click();
+  assert.equal(await page.locator('.mm-leaves:not([hidden])').count(),1);
+  await page.locator('#mm-open').click();
+  await page.locator('.mm-leaf.go a').first().click();
+  assert.equal(await page.locator('#care').isVisible(),true);
   await page.setViewportSize({width:390,height:844});
-  for (const name of ['diagnosis','care','glucose','postpartum','cases','sources']) {
+  for (const name of ['diagnosis','care','glucose','postpartum','cases','quiz','map','sources']) {
     await page.locator('[data-view='+name+']').click();
     assert.equal(await page.locator('#'+name).isVisible(),true);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth+1),true, 'Mobile overflow: '+name);
   }
   assert.deepEqual(errors,[]);
-  console.log('Desktop workflows, six cases, and six mobile views passed.');
+  console.log('Desktop workflows, six cases, quiz, mind map, and eight mobile views passed.');
 } finally {
   await browser.close();
   server.close();

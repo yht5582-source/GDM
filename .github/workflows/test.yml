@@ -17,6 +17,8 @@ jobs:
           node-version: '22'
       - name: Clinical rule tests (includes index.html ↔ clinical.mjs sync check)
         run: node --test tests/clinical.test.mjs
+      - name: Quiz and mind map tests
+        run: node --test tests/teach.test.mjs
       - name: Install browser test dependency
         run: npm install --no-save --package-lock=false playwright@1.56.1
       - name: Install Chromium

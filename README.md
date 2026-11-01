@@ -11,6 +11,7 @@
 - 血糖紀錄分析、低血糖提醒、產後 OGTT 與日期窗口。
 - 結果分為藍色「國際規範」（ADA／NICE／WHO）與綠色「台灣規範」（國健署公費產檢：24–28 週 75 g OGTT、IADPSG 門檻、孕期血糖目標、產後 4–12 週 OGTT）。
 - 六個虛構教學病例、指引差異及原文連結。
+- 考題 20 題（基礎 10、高階 10，作答後顯示解析與出處，不記錄作答）與診斷、治療心智圖。
 - 列印／複製摘要；不永久儲存病人資料。
 
 ## 使用與部署
@@ -22,6 +23,7 @@ GitHub Pages 採 Deploy from a branch：`main` 分支根目錄，推送後自動
 ## 驗證
 
 - `node --test tests/clinical.test.mjs`：64 項臨床規則測試（含台灣規範 taiwanDx），含 index.html 內嵌規則與 `clinical.mjs` 一致性檢查（修改規則時兩處須同步）。
+- `node --test tests/teach.test.mjs`：題庫結構、答案分布，並以規則引擎核對考題中的數值判讀。內容在 index.html 第二段 script 的 QUIZ、MAP 區塊。
 - `node tests/browser.mjs`：Playwright 檢查桌面與手機的關鍵操作（需先安裝 playwright）。
 
 測試結果並非獨立臨床驗證。
